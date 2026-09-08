@@ -48,16 +48,16 @@ VALIDATE $? "Removing existing code"
 rm -rf /tmp/backend.zip
 VALIDATE $? "Removed backend zip"
 
-# mkdir -p /app  &>>$LOGS_FILE
-# VALIDATE $? "Creating app directory"
+mkdir -p /app  &>>$LOGS_FILE
+VALIDATE $? "Creating app directory"
 
-# curl -o /tmp/backend.tar.gz https://raw.githubusercontent.com/daws-90s/expense-documentation/refs/heads/main/artifacts/expense-backend-v3.tar.gz &>>$LOGS_FILE
-# cd /app
-# tar -xzf /tmp/backend.tar.gz &>>$LOGS_FILE
-# VALIDATE $? "Downloaded and extracted expense code"
+curl -o /tmp/backend.tar.gz https://raw.githubusercontent.com/daws-90s/expense-documentation/refs/heads/main/artifacts/expense-backend-v3.tar.gz &>>$LOGS_FILE
+cd /app
+tar -xzf /tmp/backend.tar.gz &>>$LOGS_FILE
+VALIDATE $? "Downloaded and extracted expense code"
 
-# npm install  &>>$LOGS_FILE
-# VALIDATE $? "Installing dependencies"
+npm install  &>>$LOGS_FILE
+VALIDATE $? "Installing dependencies"
 
 # cp $SCRIPT_DIR/backend.service /etc/systemd/system/backend.service
 # VALIDATE $? "Created systemctl service"
