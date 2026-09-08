@@ -73,7 +73,7 @@ else
     echo -e "Data already loaded ... $Y SKIPPING $N"
 fi
 
-# systemctl daemon-reload
-# systemctl enable backend
-# systemctl restart backend
-# VALIDATE $? "Enable and restarted backend"
+systemctl daemon-reload
+systemctl enable backend
+systemctl restart backend
+VALIDATE $? "Enable and restarted backend"
