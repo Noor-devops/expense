@@ -42,11 +42,11 @@ else
     echo -e "System user expense already created ... $Y SKIPPING $N"
 fi
 
-# rm -rf /app
-# VALIDATE $? "Removing existing code"
+rm -rf /app
+VALIDATE $? "Removing existing code"
 
-# rm -rf /tmp/backend.zip
-# VALIDATE $? "Removed backend zip"
+rm -rf /tmp/backend.zip
+VALIDATE $? "Removed backend zip"
 
 # mkdir -p /app  &>>$LOGS_FILE
 # VALIDATE $? "Creating app directory"
