@@ -42,8 +42,8 @@ cd /usr/share/nginx/html
 tar -xzf /tmp/frontend.tar.gz
 VALIDATE $? "Downloaded and extracted frontend code"
 
-rm -rf /etc/nginx/nginx.conf
-VALIDATE $? "Removed Default conf"
+# rm -rf /etc/nginx/nginx.conf
+# VALIDATE $? "Removed Default conf"
 
 cp $SCRIPT_DIR/expense.conf /etc/nginx/default.d/expense.conf
 VALIDATE $? "Copied roboshop nginx conf"
