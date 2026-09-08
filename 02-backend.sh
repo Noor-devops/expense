@@ -34,36 +34,36 @@ dnf module enable nodejs:20 -y  &>>$LOGS_FILE
 dnf install nodejs -y &>>$LOGS_FILE
 VALIDATE $? "Installing NodeJS:20"
 
-id expense &>>$LOGS_FILE
-if [ $? -ne 0 ]; then
-    useradd --system --home /app --shell /sbin/nologin --comment "expense system user" expense &>>$LOGS_FILE
-    VALIDATE $? "Creating expense system user"
-else
-    echo -e "System user expense already created ... $Y SKIPPING $N"
-fi
+# id expense &>>$LOGS_FILE
+# if [ $? -ne 0 ]; then
+#     useradd --system --home /app --shell /sbin/nologin --comment "expense system user" expense &>>$LOGS_FILE
+#     VALIDATE $? "Creating expense system user"
+# else
+#     echo -e "System user expense already created ... $Y SKIPPING $N"
+# fi
 
-rm -rf /app
-VALIDATE $? "Removing existing code"
+# rm -rf /app
+# VALIDATE $? "Removing existing code"
 
-rm -rf /tmp/backend.zip
-VALIDATE $? "Removed backend zip"
+# rm -rf /tmp/backend.zip
+# VALIDATE $? "Removed backend zip"
 
-mkdir -p /app  &>>$LOGS_FILE
-VALIDATE $? "Creating app directory"
+# mkdir -p /app  &>>$LOGS_FILE
+# VALIDATE $? "Creating app directory"
 
-curl -o /tmp/backend.tar.gz https://raw.githubusercontent.com/daws-90s/expense-documentation/refs/heads/main/artifacts/expense-backend-v3.tar.gz &>>$LOGS_FILE
-cd /app
-tar -xzf /tmp/backend.tar.gz &>>$LOGS_FILE
-VALIDATE $? "Downloaded and extracted expense code"
+# curl -o /tmp/backend.tar.gz https://raw.githubusercontent.com/daws-90s/expense-documentation/refs/heads/main/artifacts/expense-backend-v3.tar.gz &>>$LOGS_FILE
+# cd /app
+# tar -xzf /tmp/backend.tar.gz &>>$LOGS_FILE
+# VALIDATE $? "Downloaded and extracted expense code"
 
-npm install  &>>$LOGS_FILE
-VALIDATE $? "Installing dependencies"
+# npm install  &>>$LOGS_FILE
+# VALIDATE $? "Installing dependencies"
 
-cp $SCRIPT_DIR/backend.service /etc/systemd/system/backend.service
-VALIDATE $? "Created systemctl service"
+# cp $SCRIPT_DIR/backend.service /etc/systemd/system/backend.service
+# VALIDATE $? "Created systemctl service"
 
-dnf install mysql -y &>>$LOGS_FILE
-VALIDATE $? "Installing MySQL client"
+# dnf install mysql -y &>>$LOGS_FILE
+# VALIDATE $? "Installing MySQL client"
 
 # mysql -h 172.31.27.192 -u root -pExpenseApp@1 -e "use transactions" &>>$LOGS_FILE
 # if [ $? -ne 0 ]; then
