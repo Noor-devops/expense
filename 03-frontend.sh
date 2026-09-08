@@ -6,7 +6,7 @@ sudo chown -R ec2-user:ec2-user $LOGS_FOLDER
 sudo chmod -R 755 $LOGS_FOLDER
 LOGS_FILE="$LOGS_FOLDER/$0.log"
 SCRIPT_DIR=$PWD
-MYSQL_HOST=mysql.nirfaws.online
+MYSQL_HOST=172.31.30.25
 
 USERID=$(id -u)
 R="\e[31m"
