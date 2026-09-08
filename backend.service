@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 User=expense
-Environment=DB_HOST=mysql.nirfaws.online
+Environment=DB_HOST=database.nirfaws.online
 Environment=DB_USER=expense
 Environment=DB_PWD=ExpenseApp@1
 Environment=DB_DATABASE=transactions
