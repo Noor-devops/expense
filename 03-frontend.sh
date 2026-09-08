@@ -45,8 +45,8 @@ VALIDATE $? "Downloaded and extracted frontend code"
 # rm -rf /etc/nginx/nginx.conf
 # VALIDATE $? "Removed Default conf"
 
-# cp $SCRIPT_DIR/expense.conf /etc/nginx/default.d/expense.conf
-# VALIDATE $? "Copied roboshop nginx conf"
+cp $SCRIPT_DIR/expense.conf /etc/nginx/default.d/expense.conf
+VALIDATE $? "Copied roboshop nginx conf"
 
 # systemctl restart nginx
 # systemctl enable nginx &>> $LOGS_FILE
