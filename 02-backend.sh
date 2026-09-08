@@ -59,11 +59,11 @@ VALIDATE $? "Downloaded and extracted expense code"
 npm install  &>>$LOGS_FILE
 VALIDATE $? "Installing dependencies"
 
-# cp $SCRIPT_DIR/backend.service /etc/systemd/system/backend.service
-# VALIDATE $? "Created systemctl service"
+cp $SCRIPT_DIR/backend.service /etc/systemd/system/backend.service
+VALIDATE $? "Created systemctl service"
 
-# dnf install mysql -y &>>$LOGS_FILE
-# VALIDATE $? "Installing MySQL client"
+dnf install mysql -y &>>$LOGS_FILE
+VALIDATE $? "Installing MySQL client"
 
 # mysql -h 172.31.27.192 -u root -pExpenseApp@1 -e "use transactions" &>>$LOGS_FILE
 # if [ $? -ne 0 ]; then
