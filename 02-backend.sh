@@ -59,7 +59,7 @@ VALIDATE $? "Downloaded and extracted expense code"
 npm install  &>>$LOGS_FILE
 VALIDATE $? "Installing dependencies"
 
-cp backend.service /etc/systemd/system/backend.service
+cp $SCRIPT_DIR/backend.service /etc/systemd/system/backend.service
 VALIDATE $? "Created systemctl service"
 
 dnf install mysql -y &>>$LOGS_FILE
