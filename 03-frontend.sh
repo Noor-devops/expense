@@ -48,6 +48,6 @@ VALIDATE $? "Downloaded and extracted frontend code"
 cp $SCRIPT_DIR/expense.conf /etc/nginx/default.d/expense.conf
 VALIDATE $? "Copied roboshop nginx conf"
 
-# systemctl restart nginx
-# systemctl enable nginx &>> $LOGS_FILE
-# VALIDATE $? "Enabled and restarted nginx"
+systemctl restart nginx
+systemctl enable nginx &>> $LOGS_FILE
+VALIDATE $? "Enabled and restarted nginx"
