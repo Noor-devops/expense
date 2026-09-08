@@ -60,7 +60,7 @@ do
             --query 'Reservations[*].Instances[*].PrivateIpAddress' \
             --output text
             )
-            R53_RECORD="$instance.$DOMAIN_NAME"
+            #R53_RECORD="$instance.$DOMAIN_NAME"
         fi
         aws route53 change-resource-record-sets \
         --hosted-zone-id $ZONE_ID \
