@@ -65,13 +65,13 @@ VALIDATE $? "Created systemctl service"
 dnf install mysql -y &>>$LOGS_FILE
 VALIDATE $? "Installing MySQL client"
 
-# mysql -h 172.31.27.192 -u root -pExpenseApp@1 -e "use transactions" &>>$LOGS_FILE
-# if [ $? -ne 0 ]; then
-#     mysql -h $MYSQL_HOST -uroot -pExpenseApp@1 < /app/schema/backend.sql
-#     VALIDATE $? "Data loaded"
-# else
-#     echo -e "Data already loaded ... $Y SKIPPING $N"
-# fi
+mysql -h $MYSQL_HOST -u root -pExpenseApp@1 -e "use transactions" &>>$LOGS_FILE
+if [ $? -ne 0 ]; then
+    mysql -h $MYSQL_HOST -uroot -pExpenseApp@1 < /app/schema/backend.sql
+    VALIDATE $? "Data loaded"
+else
+    echo -e "Data already loaded ... $Y SKIPPING $N"
+fi
 
 # systemctl daemon-reload
 # systemctl enable backend
