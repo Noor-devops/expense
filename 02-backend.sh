@@ -34,13 +34,13 @@ dnf module enable nodejs:20 -y  &>>$LOGS_FILE
 dnf install nodejs -y &>>$LOGS_FILE
 VALIDATE $? "Installing NodeJS:20"
 
-# id expense &>>$LOGS_FILE
-# if [ $? -ne 0 ]; then
-#     useradd --system --home /app --shell /sbin/nologin --comment "expense system user" expense &>>$LOGS_FILE
-#     VALIDATE $? "Creating expense system user"
-# else
-#     echo -e "System user expense already created ... $Y SKIPPING $N"
-# fi
+id expense &>>$LOGS_FILE
+if [ $? -ne 0 ]; then
+    useradd --system --home /app --shell /sbin/nologin --comment "expense system user" expense &>>$LOGS_FILE
+    VALIDATE $? "Creating expense system user"
+else
+    echo -e "System user expense already created ... $Y SKIPPING $N"
+fi
 
 # rm -rf /app
 # VALIDATE $? "Removing existing code"
