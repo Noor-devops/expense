@@ -1,5 +1,5 @@
 #!/bin/bash
-
+SCRIPT_DIR=$PWD
 app_name=frontend
 source ./common.sh
 check_root
