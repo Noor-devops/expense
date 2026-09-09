@@ -1,5 +1,5 @@
 #!/bin/bash
-
+MYSQL_HOST=database.nirfaws.online
 SCRIPT_DIR=$PWD
 app_name=backend
 source ./common.sh
