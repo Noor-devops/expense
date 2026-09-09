@@ -1,29 +1,6 @@
 #!/bin/bash
-
-USERID=$(id -u)
-LOGS_FOLDER="/var/log/roboshop"
-sudo mkdir -p $LOGS_FOLDER
-sudo chown -R ec2-user:ec2-user $LOGS_FOLDER
-sudo chmod -R 755 $LOGS_FOLDER
-LOGS_FILE="$LOGS_FOLDER/$0.log"
-TIMESTAMP=$(date "+%Y-%m-%d %H:%M:%S")
-R="\e[31m"
-G="\e[32m"
-Y="\e[33m"
-N="\e[0m"
-
-if [ $USERID -ne 0 ]; then
-    echo -e "$TIMESTAMP $R Please run this script with root access $N"
-    exit 1
-fi
-
-VALIDATE(){
-    if [ $1 -ne 0 ]; then
-        echo -e "$TIMESTAMP [ERROR] $2 is..... $R FAILURE $N" | tee -a $LOGS_FILE
-    else
-        echo -e "$TIMESTAMP [INFO] $2 is..... $G SUCCESS $N" | tee -a $LOGS_FILE
-    fi
-}
+source ./common.sh
+check_root
 
 dnf install mysql-server -y &>>$LOGS_FILE
 VALIDATE $? "Instaling Mysql server"
@@ -34,3 +11,5 @@ VALIDATE $? "Enable and start MySQL server"
 
 mysql_secure_installation --set-root-pass ExpenseApp@1
 VALIDATE $? "Setting up root password"
+
+print_total_time
